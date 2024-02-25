@@ -325,7 +325,7 @@ def parse_args():
     return parser.parse_args()
 
 def find_test_data_file_path(args):
-    file_path = f'./vh/dataset/env_task_set_10_{args.mode}_'
+    file_path = f'./vh/dataset/env_task_set_50_{args.mode}_'
     if not args.seen_item:
         file_path += 'unseen_item.pik'
     elif not args.seen_apartment:
