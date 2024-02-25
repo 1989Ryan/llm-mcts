@@ -20,8 +20,9 @@ BETA = 0.3  # weighting coefficient used to rank generated samples
 LAMBDA = 0.5
 
 class LLM_Model:
-    def __init__(self, device):
+    def __init__(self, device, model='gpt-3.5-turbo-0125'):
         self.device = device
+        self.model = model
         self.get_goal_sample_params = \
             {
                 "max_tokens": 32,
@@ -292,7 +293,7 @@ Now, answer the following questions:\n
         try_times = 0
         while 1:
             try: 
-                response = client.chat.completions.create(model="gpt-3.5-turbo",
+                response = client.chat.completions.create(model=self.model,
                 # model = "gpt-4",
                 messages=[{
                     "role": "system",
@@ -343,7 +344,7 @@ Now, answer the following questions:\n
         try_times = 0
         while 1:
             try: 
-                response = client.chat.completions.create(model="gpt-3.5-turbo-0125",
+                response = client.chat.completions.create(model=self.model,
                 # model = "gpt-4",
                 messages=[{
                     "role": "system",

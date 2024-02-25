@@ -322,6 +322,7 @@ def parse_args():
     parser.add_argument('--load_path', default=None, type=str)
     parser.add_argument('--batch_size', default=128, type=int)
     parser.add_argument('--evaluate', default=True)
+    parser.add_argument('--model', default="gpt-3.5-turbo-0125", type=str)
     return parser.parse_args()
 
 def find_test_data_file_path(args):
@@ -345,7 +346,7 @@ def test():
                     'x_display': "1",
                     'no_graphics': True
     }
-    llm_model = LLM_Model("cuda:0")
+    llm_model = LLM_Model("cuda:0", args.model)
     vhenv = UnityEnvironment(num_agents=1,
                                 max_episode_length=100,
                                 port_id=2,

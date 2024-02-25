@@ -87,6 +87,7 @@ python mcts/virtualhome/mcts_agent.py \
     --mode simple \
     --seen_item \
     --seen_apartment\
+    --model gpt-3.5-turbo-0125 \
     --seen_comp
 ```
 

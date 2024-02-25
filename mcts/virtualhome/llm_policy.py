@@ -26,8 +26,9 @@ def completions_with_backoff(**kwargs):
     return client.chat.completions.create(**kwargs)
 
 class LLMPolicy:
-    def __init__(self, device):
+    def __init__(self, device, model='gpt-3.5-turbo-0125'):
         self.device = device
+        self.model = model
         self.sampling_params = \
             {
                 "max_tokens": 10,
@@ -251,7 +252,7 @@ Do not generate repeated or looped actions. You must interact with objects that 
         if prompt + task in self.prompt_buffer:
             return self.prompt_buffer[prompt + task]
         else:
-            response = completions_with_backoff(model="gpt-3.5-turbo-0125",
+            response = completions_with_backoff(model=self.model,
             timeout=5,
             messages=[{
                 "role": "system",

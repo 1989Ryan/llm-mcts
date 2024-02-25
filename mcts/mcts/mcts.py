@@ -81,7 +81,7 @@ class MCTSAgent:
         self.simulation_num = args.simulation_num
         self.use_llm = use_llm
         if use_llm:
-            self.llm_policy = LLMPolicy(device="cuda:0") 
+            self.llm_policy = LLMPolicy(device="cuda:0", model=args.model) 
         self.q_network = None
         # self.valid_action_dict = env.action_dict
         # self.valid_action_dict = {} if valid_action_dict is None else valid_action_dict
