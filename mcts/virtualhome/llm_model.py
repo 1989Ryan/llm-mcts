@@ -394,9 +394,10 @@ Now, answer the following questions:\n
             object_positions[object] = samples
             # print(object_positions[object])
         # print(object_positions)   
-        object_positions = {}
+
         # save samples
         json.dump(object_positions, open("./data/object_all_positions.json", "w"))
+        object_positions = {}
         for object in self.furniture_list:
             samples = self.query_llm(f"Question: What is the most possible position of {object}?\nAnswer: ", "", "", 1)
             object_positions[object] = samples
